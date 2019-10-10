@@ -7,6 +7,7 @@ const express = require('express'),
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+mongoose.set('useUnifiedTopology', true);
 
 //Enable CORS for all HTTP methods
 app.use(function(req, res, next) {
