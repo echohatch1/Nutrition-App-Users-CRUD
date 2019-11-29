@@ -7,7 +7,7 @@ const UsersSchema = new Schema({
     first: { type: String, lowercase: true, required: true, max: 100 },
     last: { type: String, lowercase: true, required: true, max: 100 },
     email: { type: String, lowercase: true, required: true, max: 100 },
-    password: { type: String, required: true, max: 20 }
+    food: { type: Object },
 });
 
 module.exports = mongoose.model('Users', UsersSchema)
