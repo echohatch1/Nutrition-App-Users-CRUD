@@ -72,17 +72,24 @@ exports.update_a_user = function(req, res) {
 // });
 // };
 
-exports.update_by_email = function (req, res, next)
-{
-var food = req.body.food;
+// exports.update_by_email = function (req, res, next)
+// {
+// var food = req.body.food;
 // User.findOneAndUpdate({email: req.params.userEmail}, {$push: {foods: food}}
 //   );
-UsersSchema.update(
-  { email: req.params.userEmail }, 
-  { $push: { foods: food } },
-  done
-);
-};
+// };
+
+var food = { food:"tes12" };
+User.findOneAndUpdate(
+   { email: req.body.email }, 
+   { $push: { foods: food  } },
+  function (error, success) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(success);
+        }
+    });
 
 
 exports.delete_a_user = function(req, res) {
