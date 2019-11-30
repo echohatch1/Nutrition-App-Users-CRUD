@@ -69,7 +69,7 @@ exports.update_a_user = function(req, res) {
 // });
 // };
 
-users.update_by_email(email,
+exports.update_by_email(email,
   {$push: {food: food}},
   {safe: true, upsert: true},
   function(err, doc) {
