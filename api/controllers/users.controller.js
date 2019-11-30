@@ -62,7 +62,7 @@ exports.update_a_user = function(req, res) {
 
 exports.update_by_email = function(req, res) {
   var food = req.body.food;
-  User.findOneAndUpdate({email: req.params.email}, function(err, user) {
+  User.findOneAndUpdate({email: req.body.email}, function(err, user) {
   if (err)
     res.send(err);
   //res.json({ message: 'User successfully updated' + ' ' + user });
