@@ -8,7 +8,10 @@ const UsersSchema = new Schema({
     last: { type: String, lowercase: true, required: true, max: 100 },
     email: { type: String, lowercase: true, required: true, max: 100 },
     date: { type: Date, default: Date.now },
-    foods: []
-});
+    foods: [{type: Object}],
+    
+},
+{usePushEach: true}
+);
 
 module.exports = mongoose.model('Users', UsersSchema)
