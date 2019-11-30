@@ -15,11 +15,13 @@ module.exports = function(app) {
     .put(users.update_a_user)
     .delete(users.delete_a_user);
 
+
   //search by first
   app.route('/users/first/:userFirst')
     .get(users.read_a_user_first);
 
-  //search by email
+  //search/update by email
   app.route('/users/email/:userEmail')
-    .get(users.read_a_user_email);
+    .get(users.read_a_user_email)
+    .put(users.update_by_email);
 };

@@ -60,6 +60,15 @@ exports.update_a_user = function(req, res) {
   });
 };
 
+exports.update_by_email = function(req, res) {
+  User.findOneAndUpdate({email: req.params.userEmail}, req.body, {new: true}, { $push: { food: objFriends  } }, function(err, user) {
+  if (err)
+    res.send(err);
+  //res.json({ message: 'User successfully updated' + ' ' + user });
+  res.json(user);
+});
+};
+
 
 exports.delete_a_user = function(req, res) {
 
