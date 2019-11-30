@@ -8,7 +8,7 @@ const UsersSchema = new Schema({
     last: { type: String, lowercase: true, required: true, max: 100 },
     email: { type: String, lowercase: true, required: true, max: 100 },
     date: { type: Date, default: Date.now },
-    foods: { type: Array },
+    foods: [{food: String}]
 });
 
 module.exports = mongoose.model('Users', UsersSchema)
