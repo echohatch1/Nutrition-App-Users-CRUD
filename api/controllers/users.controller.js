@@ -60,27 +60,20 @@ exports.update_a_user = function(req, res) {
   });
 };
 
-exports.update_by_email = function(req, res) {
-  User.findOneAndUpdate({email: req.params.userEmail}, req.body, {safe: true, upsert: true}, {$push: {food: food}}, function(err, user) {
-  if (err)
-    res.send(err);
-  //res.json({ message: 'User successfully updated' + ' ' + user });
-  res.json(user);
-});
-};
+// exports.update_by_email = function(req, res) {
+//   User.findOneAndUpdate({email: req.params.userEmail}, req.body, {new: true}, function(err, user) {
+//   if (err)
+//     res.send(err);
+//   //res.json({ message: 'User successfully updated' + ' ' + user });
+//   res.json(user);
+// });
+// };
 
-// exports.update_by_email(email,
-//   {$push: {food: food}},
-//   {safe: true, upsert: true},
-//   function(err, doc) {
-//       if(err){
-//       console.log(err);
-//       }else{
-//         res.json(user);
-//       //do stuff
-//       }
-//   }
-// );
+exports.update_by_email = function (req, res, next)
+{
+var food = req.body.food;
+User.findOneAndUpdate({email: req.user.email}, {$push: {food: food}});
+};
 
 
 exports.delete_a_user = function(req, res) {
