@@ -74,13 +74,13 @@ exports.update_a_user = function(req, res) {
 
 exports.update_by_email = function (req, res, next)
 {
-// var food = req.body.food;
-// User.findOneAndUpdate({email: req.params.userEmail}, {$push: {foods: food}}
-//   );
-var Record = User.findOne({email: req.params.userEmail});
-var foodItem = req.body.food;
-Record.foods.push({foodItem});
-Record.save();
+var food = req.body.food;
+User.findOneAndUpdate({email: req.params.userEmail}, {$push: {foods: food}}
+  );
+// var Record = User.findOne({email: req.params.userEmail});
+// var foodItem = req.body.food;
+// Record.foods.push({foodItem});
+// Record.save();
 };
 
 
