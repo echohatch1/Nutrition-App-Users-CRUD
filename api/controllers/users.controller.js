@@ -60,24 +60,29 @@ exports.update_a_user = function(req, res) {
   });
 };
 
-exports.update_by_email = function(req, res) {
-  var food = req.body.food;
-  User.findOneAndUpdate({email: req.body.email}, function(err, user) {
-  if (err)
-    res.send(err);
-  //res.json({ message: 'User successfully updated' + ' ' + user });
-  User.foods.push(food);
-  User.save(done);
-  res.json(user);
-});
-};
+// exports.update_by_email = function(req, res) {
+//   var food = req.body.food;
+//   User.findOneAndUpdate({email: req.params.userEmail}, function(err, user) {
+//   if (err)
+//     res.send(err);
+//   //res.json({ message: 'User successfully updated' + ' ' + user });
+//   User.foods.push(food);
+//   User.save(done);
+//   res.json(user);
+// });
+// };
 
-// exports.update_by_email = function (req, res, next)
-// {
-// var food = req.body.food;
+exports.update_by_email = function (req, res, next)
+{
+var food = req.body.food;
 // User.findOneAndUpdate({email: req.params.userEmail}, {$push: {foods: food}}
 //   );
-// };
+UsersSchema.update(
+  { email: User.email }, 
+  { $push: { foods: food } },
+  done
+);
+};
 
 
 exports.delete_a_user = function(req, res) {
