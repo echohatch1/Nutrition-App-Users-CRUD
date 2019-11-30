@@ -78,7 +78,7 @@ var food = req.body.food;
 // User.findOneAndUpdate({email: req.params.userEmail}, {$push: {foods: food}}
 //   );
 UsersSchema.update(
-  { email: User.email }, 
+  { email: req.params.userEmail }, 
   { $push: { foods: food } },
   done
 );
